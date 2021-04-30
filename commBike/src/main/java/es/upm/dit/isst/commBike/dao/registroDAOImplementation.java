@@ -40,7 +40,7 @@ public class registroDAOImplementation {
 		
 		  registro registro = null;
 		  
-		  session.get(registro.class, registroCode);
+		  registro = session.get(registro.class, registroCode);
 		
 		  session.getTransaction().commit();
 		
@@ -96,6 +96,7 @@ public class registroDAOImplementation {
 			
 			  return registro;
 			}
+		@SuppressWarnings("unchecked")
 		public List<registro> readAll () {
 			
 			  Session session = SessionFactoryService.get().openSession();
@@ -104,7 +105,7 @@ public class registroDAOImplementation {
 			
 			  List<registro> registro = null;
 			  
-			 session.createQuery("from registro").list();
+			  registro = session.createQuery("from registro").list();
 			
 			  session.getTransaction().commit();
 			

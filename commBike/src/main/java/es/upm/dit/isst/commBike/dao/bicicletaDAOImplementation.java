@@ -4,7 +4,7 @@ package es.upm.dit.isst.commBike.dao;
 
 import es.upm.dit.isst.commBike.model.bicicleta;
 
-
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -38,9 +38,9 @@ public class bicicletaDAOImplementation {
 		
 		  session.beginTransaction();
 		
-		  bicicleta bike = null;
 		  
-		 session.get(bicicleta.class, bikeCode);
+		  
+		 bicicleta bike = session.get(bicicleta.class, bikeCode);
 		
 		  session.getTransaction().commit();
 		
@@ -96,15 +96,16 @@ public class bicicletaDAOImplementation {
 			
 			  return bicicleta;
 			}
+		@SuppressWarnings("unchecked")
 		public List<bicicleta> readAll () {
 			
 			  Session session = SessionFactoryService.get().openSession();
 			
 			  session.beginTransaction();
 			
-			  List<bicicleta> bicicletas = null;
+			  ArrayList<bicicleta> bicicletas = new ArrayList<bicicleta>(); 
 			  
-			 session.createQuery("from bicicleta").list();
+			  bicicletas.addAll(session.createQuery("from bicicleta").list());
 			
 			  session.getTransaction().commit();
 			
@@ -112,6 +113,8 @@ public class bicicletaDAOImplementation {
 			
 			  return bicicletas;
 			}
+		@SuppressWarnings("unchecked")
+
 		public List<bicicleta> readAll (String usuario) {
 			
 			  Session session = SessionFactoryService.get().openSession();
@@ -120,7 +123,7 @@ public class bicicletaDAOImplementation {
 			
 			  List<bicicleta> bicicletas = null;
 			  
-			 session.createQuery("from bicicleta").list();
+			  bicicletas =  session.createQuery("from bicicleta").list();
 			
 			  session.getTransaction().commit();
 			
