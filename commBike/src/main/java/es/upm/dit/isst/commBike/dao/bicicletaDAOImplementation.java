@@ -104,8 +104,9 @@ public class bicicletaDAOImplementation {
 			  session.beginTransaction();
 			
 			  ArrayList<bicicleta> bicicletas = new ArrayList<bicicleta>(); 
-			  
-			  bicicletas.addAll(session.createQuery("from bicicleta").list());
+			 System.out.println(session.createQuery("FROM bicicleta").list());
+			   
+			  bicicletas.addAll(session.createQuery("FROM bicicleta").list());
 			
 			  session.getTransaction().commit();
 			

@@ -18,12 +18,10 @@ import es.upm.dit.isst.commBike.model.*;
 public class bicicletaResource {
 	
 	@GET
-
 	@Produces(MediaType.APPLICATION_JSON)
-
 	public List<bicicleta> readAll () {
 			List<bicicleta> list = bicicletaDAOImplementation.getInstance().readAll();
-		
+			System.out.println("bicis:"+list);
 	        return list;
 
 	}

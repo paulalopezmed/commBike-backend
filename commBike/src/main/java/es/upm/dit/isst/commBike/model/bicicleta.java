@@ -9,9 +9,11 @@ import java.util.stream.IntStream;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 
 @Entity
+@Table (name= "BICICLETA")
 public class bicicleta implements Serializable {
 	private static final long serialVersionUID=1L;
 	
