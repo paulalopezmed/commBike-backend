@@ -2,28 +2,28 @@ package es.upm.dit.isst.commBike.dao;
 
 
 
+import es.upm.dit.isst.commBike.model.Usuario;
 
-import es.upm.dit.isst.commBike.model.registro;
-
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
 
-import es.upm.dit.isst.commBike.dao.SessionFactoryService;;
+import es.upm.dit.isst.commBike.dao.SessionFactoryService;
 
-public class registroDAOImplementation {
-	private static  registroDAOImplementation instancia = null;
+public class UsuarioDAOImplementation {
+	private static  UsuarioDAOImplementation instancia = null;
 
-	  private registroDAOImplementation() {
+	  private UsuarioDAOImplementation() {
 
 	  }
 
 
-	 public static registroDAOImplementation getInstance() {
+	 public static UsuarioDAOImplementation getInstance() {
 
 	    if( null == instancia )
 
-	      instancia = new registroDAOImplementation();
+	      instancia = new UsuarioDAOImplementation();
 
 	    return instancia;
 
@@ -32,105 +32,99 @@ public class registroDAOImplementation {
 
 		
 		
-		public registro read (String registroCode) {
+		public Usuario read (String nombre) {
 		
 		  Session session = SessionFactoryService.get().openSession();
 		
 		  session.beginTransaction();
 		
-		  registro registro = null;
 		  
-		  registro = session.get(registro.class, registroCode);
+		  
+		  Usuario user = session.get(Usuario.class, nombre);
 		
 		  session.getTransaction().commit();
 		
 		  session.close();
 		
-		  return registro;
+		  return user;
 		}
-		public registro create (registro record) {
+		public Usuario create (Usuario user) {
 			
 			  Session session = SessionFactoryService.get().openSession();
 			
 			  session.beginTransaction();
-			
-//			  registro registro = null;
 			  
-			 session.save(record);
+			  session.save(user);
 			
 			  session.getTransaction().commit();
 			
 			  session.close();
-			  return record;
 			
-			  
+			  return user;
 			}
-		public registro update (registro record) {
+		
+		public Usuario update (Usuario user) {
 			
 			  Session session = SessionFactoryService.get().openSession();
 			
-			  session.beginTransaction();
-			
-//			  registro registro = null;
+			  session.beginTransaction();				 
 			  
-			  session.saveOrUpdate(record);
+			 session.saveOrUpdate(user);
 			
 			  session.getTransaction().commit();
 			
 			  session.close();
-			  
-			  return record;
 			
-			  
+			  return user;
 			}
-		public registro delete (registro record) {
+		public Usuario delete (Usuario user) {
 			
 			  Session session = SessionFactoryService.get().openSession();
 			
 			  session.beginTransaction();
-			
-			  registro registro = null;
 			  
-			 session.delete(record);
+			 session.delete(user);
 			
 			  session.getTransaction().commit();
 			
 			  session.close();
 			
-			  return registro;
+			  return user;
 			}
 		@SuppressWarnings("unchecked")
-		public List<registro> readAll () {
+		public List<Usuario> readAll () {
 			
 			  Session session = SessionFactoryService.get().openSession();
 			
 			  session.beginTransaction();
 			
-			  List<registro> registro = null;
-			  
-			  registro = session.createQuery("from registro").list();
+			  ArrayList<Usuario> users = new ArrayList<Usuario>(); 
+			   
+			  users.addAll(session.createQuery("FROM Usuario").list());
 			
 			  session.getTransaction().commit();
 			
 			  session.close();
 			
-			  return registro;
+			  return users;
 			}
-		public List<registro> readAll (String usuario) {
+		@SuppressWarnings("unchecked")
+
+		public List<Usuario> readAll (String nombre) {
 			
 			  Session session = SessionFactoryService.get().openSession();
 			
 			  session.beginTransaction();
 			
-			  List<registro> record = null;
+			  List<Usuario> users = null;
 			  
-			 session.createQuery("from registro").list();
+			  users =  session.createQuery("FROM Usuario").list();
 			
 			  session.getTransaction().commit();
 			
 			  session.close();
 			
-			  return record;
+			  return users;
 			}
 		
 		
