@@ -54,7 +54,7 @@ public class bicicletaDAOImplementation {
 			
 			  session.beginTransaction();
 			
-			  bicicleta bicicleta = null;
+			 
 			  
 			 session.save(bike);
 			
@@ -62,7 +62,7 @@ public class bicicletaDAOImplementation {
 			
 			  session.close();
 			
-			  return bicicleta;
+			  return bike;
 			}
 		public bicicleta update (bicicleta bike) {
 			
@@ -70,7 +70,7 @@ public class bicicletaDAOImplementation {
 			
 			  session.beginTransaction();
 			
-			  bicicleta bicicleta = null;
+		
 			  
 			 session.saveOrUpdate(bike);
 			
@@ -78,7 +78,7 @@ public class bicicletaDAOImplementation {
 			
 			  session.close();
 			
-			  return bicicleta;
+			  return bike;
 			}
 		public bicicleta delete (bicicleta bike) {
 			
